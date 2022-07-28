@@ -11,14 +11,14 @@ import axios from 'axios'
 import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 import { formatPrice } from '../utils/helpers'
-import { useHistory } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const promise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY)
 
 const CheckoutForm = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext()
   const { myUser } = useUserContext()
-  const history = useHistory()
+  const navigate = useNavigate()
   // STRIPE STUFF
   const [succeeded, setSucceeded] = useState(false)
   const [error, setError] = useState(null)
@@ -85,7 +85,7 @@ const CheckoutForm = () => {
       setSucceeded(true)
       setTimeout(() => {
         clearCart()
-        history.push('/')
+        navigate.push('/')
       }, 10000)
     }
   }
@@ -102,28 +102,28 @@ const CheckoutForm = () => {
         <article>
           <h4>Hello, {myUser && myUser.name}</h4>
           <p>Your total is {formatPrice(shipping_fee + total_amount)}</p>
-          <p>Test Card Number : 4242 4242 4242 4242</p>
+          <p>Test Card Number : 4000 0025 0000 3155</p>
         </article>
       )}
-      <form id='payment-form' onSubmit={handleSubmit}>
+      <form id="payment-form" onSubmit={handleSubmit}>
         <CardElement
-          id='card-element'
+          id="card-element"
           options={cardStyle}
           onChange={handleChange}
         />
-        <button disabled={processing || disabled || succeeded} id='submit'>
-          <span id='button-text'>
-            {processing ? <div className='spinner' id='spinnier'></div> : 'Pay'}
+        <button disabled={processing || disabled || succeeded} id="submit">
+          <span id="button-text">
+            {processing ? <div className="spinner" id="spinnier"></div> : "Pay"}
           </span>
         </button>
         {/* Show any error that happens when processing the payment */}
         {error && (
-          <div className='card-error' role='alert'>
+          <div className="card-error" role="alert">
             {error}
           </div>
         )}
         {/* Show  a success message upon completion */}
-        <p className={succeeded ? 'result-message' : 'result-message hidden'}>
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
           Payment succedded, see the result in your
           <a href={`https://dashboard.stripe.com/test/payments`}>
             Stripe dasboard.
@@ -132,7 +132,7 @@ const CheckoutForm = () => {
         </p>
       </form>
     </div>
-  )
+  );
 }
 
 const StripeCheckout = () => {

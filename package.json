@@ -14,7 +14,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^3.11.0",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "stripe": "^8.130.0",
     "styled-components": "^5.2.1",
@@ -48,7 +48,9 @@
   },
   "devDependencies": {
     "netlify-cli": "^3.10.1",
+    "postcss": "^8.4.14",
     "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-loader": "^7.0.1",
     "postcss-preset-env": "^7.7.2"
   }
 }
