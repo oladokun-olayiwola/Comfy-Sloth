@@ -1,5 +1,5 @@
-import React from 'react'
-import { GiCompass, GiDiamondHard, GiStabbedNote } from 'react-icons/gi'
+import React from 'react';
+import { GiCompass, GiDiamondHard, GiStabbedNote } from 'react-icons/gi';
 export const links = [
   {
     id: 1,
@@ -16,28 +16,29 @@ export const links = [
     text: 'products',
     url: '/products',
   },
-]
+];
 
 export const services = [
   {
     id: 1,
     icon: <GiCompass />,
     title: 'mission',
-    text: "At Comfy Sloth, our mission is to craft custom furniture that combines style and functionality, ensuring every piece enhances the comfort of your home."
+    text: 'At Comfy Sloth, our mission is to craft custom furniture that combines style and functionality, ensuring every piece enhances the comfort of your home.',
   },
   {
     id: 2,
     icon: <GiDiamondHard />,
     title: 'vision',
-    text: "Our vision is to redefine the way people experience furniture, creating timeless designs that resonate with modern living while preserving sustainability."  },
+    text: 'Our vision is to redefine the way people experience furniture, creating timeless designs that resonate with modern living while preserving sustainability.',
+  },
   {
     id: 3,
     icon: <GiStabbedNote />,
     title: 'history',
-    text: "Founded with a passion for quality craftsmanship, Comfy Sloth has grown into a trusted brand for personalized furniture, serving countless happy customers."
+    text: 'Founded with a passion for quality craftsmanship, Comfy Sloth has grown into a trusted brand for personalized furniture, serving countless happy customers.',
   },
-]
+];
 
-export const products_url = 'https://course-api.com/react-store-products'
+export const products_url = 'https://course-api.com/react-store-products';
 
-export const single_product_url = `https://course-api.com/react-store-single-product?id=`
+export const single_product_url = `https://course-api.com/react-store-single-product?id=`;

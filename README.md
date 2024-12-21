@@ -13,11 +13,10 @@ Comfy Sloth is a modern and stylish furniture e-commerce web application. Design
 
 ## Tech Stack
 
-- **Frontend:** React (TypeScript)
-- **Styling:** CSS or TailwindCSS (depending on your project)
-- **State Management:** Context API or Redux (if applicable)
-- **Backend:** Node.js (if integrated with a custom backend, otherwise mention any mock API service like JSON Server)
-- **Hosting:** Netlify (as per the deployed URL)
+- **Frontend:** React
+- **Styling:** CSS
+- **State Management:** Context API
+- **Hosting:** Netlify
 
 ## Installation
 
@@ -30,7 +29,7 @@ To run this project locally:
 
 2. Navigate to the project directory:
    ```bash
-   cd comfy-sloth-store
+   cd main
    ```
 
 3. Install dependencies:
@@ -60,15 +59,13 @@ To deploy the app on Netlify:
 ```
 comfy-sloth-store/
 ├── public/
-│   ├── images/        # Static assets like images
 │   └── index.html     # Main HTML file
 ├── src/
 │   ├── components/    # Reusable components
 │   ├── pages/         # Main app pages
-│   ├── context/       # State management (e.g., Context API)
-│   ├── styles/        # CSS files or Tailwind configuration
-│   ├── App.tsx        # Main app entry point
-│   └── index.tsx      # React DOM renderer
+│   ├── context/       # State management (Context API)
+│   ├── App.js        # Main app entry point
+│   └── index.js      # React DOM renderer
 ├── package.json       # App dependencies
 └── README.md          # Project documentation
 ```
