@@ -23,22 +23,18 @@ export const services = [
     id: 1,
     icon: <GiCompass />,
     title: 'mission',
-    text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+    text: "At Comfy Sloth, our mission is to craft custom furniture that combines style and functionality, ensuring every piece enhances the comfort of your home."
   },
   {
     id: 2,
     icon: <GiDiamondHard />,
     title: 'vision',
-    text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
-  },
+    text: "Our vision is to redefine the way people experience furniture, creating timeless designs that resonate with modern living while preserving sustainability."  },
   {
     id: 3,
     icon: <GiStabbedNote />,
     title: 'history',
-    text:
-      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptates, ea. Perferendis corrupti reiciendis nesciunt rerum velit autem unde numquam nisi',
+    text: "Founded with a passion for quality craftsmanship, Comfy Sloth has grown into a trusted brand for personalized furniture, serving countless happy customers."
   },
 ]
 
