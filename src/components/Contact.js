@@ -1,37 +1,37 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from 'react';
+import styled from 'styled-components';
 
 const Contact = () => {
   return (
     <Wrapper>
-      <div className='section-center'>
+      <div className="section-center">
         <h3>Join our newsletter and get 20% off</h3>
-        <div className='content'>
+        <div className="content">
           <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum
-            veniam repudiandae vel ab id, fuga praesentium nobis natus ipsam
-            vero?
+            Stay connected with Comfy Sloth and receive the latest updates,
+            exclusive offers, and design inspirations delivered to your inbox.
+            Sign up now and enjoy 20% off your first order!
           </p>
           <form
-            className='contact-form'
-            action='your form spree id'
-            method='POST'
+            className="contact-form"
+            action="your form spree id"
+            method="POST"
           >
             <input
-              type='email'
-              className='form-input'
-              placeholder='enter email'
-              name='_replyto'
+              type="email"
+              className="form-input"
+              placeholder="enter email"
+              name="_replyto"
             />
-            <button type='submit' className='submit-btn'>
+            <button type="submit" className="submit-btn">
               subscribe
             </button>
           </form>
         </div>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 const Wrapper = styled.section`
   padding: 5rem 0;
   h3 {
@@ -95,6 +95,6 @@ const Wrapper = styled.section`
   @media (min-width: 1280px) {
     padding: 15rem 0;
   }
-`
+`;
 
-export default Contact
+export default Contact;
