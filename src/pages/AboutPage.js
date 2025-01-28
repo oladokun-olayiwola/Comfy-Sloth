@@ -17,7 +17,7 @@ const AboutPage = () => {
           <p>
             At Comfy Sloth, we believe furniture is more than just decor—it's a
             reflection of your personality and lifestyle. Founded with a passion
-            for quality craftsmanship and innovative design, we’ve dedicated
+            for quality craftsmanship and innovative design, we've dedicated
             ourselves to creating custom furniture that perfectly balances
             comfort and style. From timeless classics to modern pieces, every
             item we craft is made to transform your space into a true sanctuary
