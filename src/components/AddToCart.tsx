@@ -1,35 +1,41 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { Link } from 'react-router-dom'
-import { FaCheck } from 'react-icons/fa'
-import { useCartContext } from '../context/cart_context'
-import AmountButtons from './AmountButtons'
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { FaCheck } from 'react-icons/fa';
+import { useCartContext } from '../context/cart_context';
+import AmountButtons from './AmountButtons';
+import { Product } from '../interfaces/reducerTypes';
 
-const AddToCart = ({ product }) => {
-  const { addToCart } = useCartContext()
-  const { id, stock, colors } = product
+interface AddToCartProps {
+  product: Product;
+}
 
-  const [mainColor, setMainColor] = useState(colors[0])
-  const [amount, setAmount] = useState(1)
+const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
+  const { addToCart } = useCartContext();
+  const { id, stock, colors } = product;
+
+  const [mainColor, setMainColor] = useState<string>(colors[0]);
+  const [amount, setAmount] = useState<number>(1);
 
   const increase = () => {
     setAmount((oldAmount) => {
-      let tempAmount = oldAmount + 1
+      let tempAmount = oldAmount + 1;
       if (tempAmount > stock) {
-        tempAmount = stock
+        tempAmount = stock;
       }
-      return tempAmount
-    })
-  }
+      return tempAmount;
+    });
+  };
+
   const decrease = () => {
     setAmount((oldAmount) => {
-      let tempAmount = oldAmount - 1
+      let tempAmount = oldAmount - 1;
       if (tempAmount < 1) {
-        tempAmount = 1
+        tempAmount = 1;
       }
-      return tempAmount
-    })
-  }
+      return tempAmount;
+    });
+  };
 
   return (
     <Wrapper>
@@ -48,7 +54,7 @@ const AddToCart = ({ product }) => {
               >
                 {mainColor === color ? <FaCheck /> : null}
               </button>
-            )
+            );
           })}
         </div>
       </div>
@@ -67,8 +73,8 @@ const AddToCart = ({ product }) => {
         </Link>
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   margin-top: 2rem;
@@ -114,5 +120,6 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     width: 140px;
   }
-`
-export default AddToCart
+`;
+
+export default AddToCart;
