@@ -1,4 +1,3 @@
-import React from 'react';
 import { GiCompass, GiDiamondHard, GiStabbedNote } from 'react-icons/gi';
 export const links = [
   {
@@ -21,19 +20,19 @@ export const links = [
 export const services = [
   {
     id: 1,
-    icon: <GiCompass />,
+    icon: typeof GiCompass,
     title: 'mission',
     text: 'At Comfy Sloth, our mission is to craft custom furniture that combines style and functionality, ensuring every piece enhances the comfort of your home.',
   },
   {
     id: 2,
-    icon: <GiDiamondHard />,
+    icon: typeof GiDiamondHard,
     title: 'vision',
     text: 'Our vision is to redefine the way people experience furniture, creating timeless designs that resonate with modern living while preserving sustainability.',
   },
   {
     id: 3,
-    icon: <GiStabbedNote />,
+    icon: typeof GiStabbedNote,
     title: 'history',
     text: 'Founded with a passion for quality craftsmanship, Comfy Sloth has grown into a trusted brand for personalized furniture, serving countless happy customers.',
   },
