@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "./dist",  // Specifies the output folder
+    "outDir": "./build",  // Specifies the output folder
     "rootDir": "./src",  // Specifies the input source folder
     "target": "ESNext",                     // Use latest ECMAScript features
     "lib": ["DOM", "DOM.Iterable", "ESNext"], // Support DOM APIs and async iterators
@@ -14,7 +14,7 @@
     "forceConsistentCasingInFileNames": true, // Enforce case-sensitive imports
     "resolveJsonModule": true,               // Allow importing JSON files
     "isolatedModules": true,                 // Required for Next.js or create-react-app
-    "noEmit": true                            // Don't emit compiled JS (handled by bundlers like Vite/Webpack)
+    "noEmit": false,                            // Don't emit compiled JS (handled by bundlers like  Vite/Webpack)
   },
   "include": ["src"],                        // Include the src directory
   "exclude": ["node_modules", "dist"]        // Exclude unnecessary folders
