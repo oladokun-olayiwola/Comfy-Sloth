@@ -96,6 +96,7 @@ export interface Filters {
   category: string;
   color: string;
   price: number;
+  min_price: number;
   max_price: number;
   shipping: boolean;
 }
