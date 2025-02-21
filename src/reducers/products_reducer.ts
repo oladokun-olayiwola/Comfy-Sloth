@@ -37,3 +37,5 @@ const productsReducer = (state: ProductState, action: ProductAction): ProductSta
       throw new Error(`No Matching "${(action as ProductAction).type}" - action type`);
   }
 };
+
+export default productsReducer
