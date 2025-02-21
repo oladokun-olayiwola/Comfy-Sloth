@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { Product } from "./reducerTypes";
+import { ReactNode } from 'react';
+import { Product } from './reducerTypes';
 
 // reducerTypes.ts
 export interface CartItem {
@@ -43,9 +43,7 @@ export interface CartContextValue extends CartState {
   clearCart: () => void;
 }
 
-
 // Filter Context
-
 interface Filters {
   text: string;
   company: string;
@@ -75,4 +73,24 @@ export interface FilterContextValue extends FilterState {
   updateSort: (e: React.ChangeEvent<HTMLInputElement>) => void;
   updateFilters: (e: React.ChangeEvent<HTMLInputElement>) => void;
   clearFilters: () => void;
+}
+export interface ProductState {
+  isSidebarOpen: boolean;
+  products_loading: boolean;
+  products: Product[];
+  featured_products: Product[];
+  products_error?: boolean;
+  single_product_loading?: boolean;
+  single_product?: Product;
+  single_product_error?: boolean;
+}
+
+export interface ProductProviderProps {
+  children: ReactNode;
+}
+
+export interface ProductContextValue extends ProductState {
+  openSidebar: () => void;
+  closeSidebar: () => void;
+  fetchSingleProduct: (url: string) => void;
 }
