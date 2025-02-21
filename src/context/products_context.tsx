@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useReducer } from 'react'
+import React, { createContext, useContext, useEffect, useReducer } from 'react'
 import reducer from '../reducers/products_reducer'
 import { products_url as url } from '../utils/constants'
 import {
@@ -12,8 +12,9 @@ import {
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
 } from '../actions'
+import { ProductState, ProductContextValue, ProductProviderProps } from '../interfaces/contextTypes'
 
-const initialState = {
+const initialState: ProductState = {
   isSidebarOpen: false,
   products_loading: false,
   products_error: false,
@@ -21,12 +22,24 @@ const initialState = {
   featured_products: [],
   single_product_loading: false,
   single_product_error: false,
-  single_product: {},
+  single_product: {
+    id: '',
+    name: '',
+    price: 0,
+    image: '',
+    colors: [],
+    company: '',
+    description: '',
+    featured: false,
+    category: '',
+    shipping: false,
+    stock: 0
+  },
 }
 
-const ProductsContext = React.createContext()
+const ProductsContext = createContext<ProductContextValue | null>(null)
 
-export const ProductsProvider = ({ children }) => {
+export const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
   const openSidebar = () => {
@@ -36,7 +49,7 @@ export const ProductsProvider = ({ children }) => {
     dispatch({ type: SIDEBAR_CLOSE })
   }
 
-  const fetchProducts = async (url) => {
+  const fetchProducts = async (url: string) => {
     dispatch({ type: GET_PRODUCTS_BEGIN })
     try {
       const response = await axios.get(url)
@@ -47,7 +60,7 @@ export const ProductsProvider = ({ children }) => {
     }
   }
 
-  const fetchSingleProduct = async (url) => {
+  const fetchSingleProduct = async (url: string) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
     try {
       const response = await axios.get(url)

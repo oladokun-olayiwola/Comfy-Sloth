@@ -7,8 +7,7 @@ import {
   CLEAR_CART,
   COUNT_CART_TOTALS,
 } from '../actions';
-import { CartItem, CartState } from '../interfaces/reducerTypes';
-import { CartContextValue, CartProviderProps } from '../interfaces/contextTypes';
+import { CartContextValue, CartProviderProps, CartItem, CartState  } from '../interfaces/contextTypes';
 
 const getLocalStorage = (): CartItem[] => {
   const cart = localStorage.getItem('cart');
