@@ -1,5 +1,5 @@
 import axios from 'axios'
-import React, { createContext, useContext, useEffect, useReducer } from 'react'
+import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react'
 import reducer from '../reducers/products_reducer'
 import { products_url as url } from '../utils/constants'
 import {
@@ -49,7 +49,7 @@ export const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) =
     dispatch({ type: SIDEBAR_CLOSE })
   }
 
-  const fetchProducts = async (url: string) => {
+  const fetchProducts = useCallback(async (url: string) => {
     dispatch({ type: GET_PRODUCTS_BEGIN })
     try {
       const response = await axios.get(url)
@@ -58,7 +58,7 @@ export const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) =
     } catch (error) {
       dispatch({ type: GET_PRODUCTS_ERROR })
     }
-  }
+  }, [])
 
   const fetchSingleProduct = async (url: string) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
@@ -73,7 +73,7 @@ export const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) =
 
   useEffect(() => {
     fetchProducts(url)
-  }, [])
+  }, [fetchProducts])
 
   return (
     <ProductsContext.Provider
