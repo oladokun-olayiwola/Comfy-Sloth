@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Product } from './reducerTypes';
+import { User } from '@auth0/auth0-react';
 
 // reducerTypes.ts
 export interface CartItem {
@@ -93,4 +94,17 @@ export interface ProductContextValue extends ProductState {
   openSidebar: () => void;
   closeSidebar: () => void;
   fetchSingleProduct: (url: string) => void;
+}
+
+// User Context 
+
+export interface UserState {
+  myUser?: User;
+}
+export interface UserProviderProps {
+  children: ReactNode;
+}
+export interface UserContextValue extends UserState {
+  loginWithRedirect: () => void;
+  logout: () => void;
 }
