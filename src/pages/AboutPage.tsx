@@ -2,11 +2,16 @@ import React from 'react';
 import styled from 'styled-components';
 import { PageHero } from '../components';
 import aboutImg from '../assets/hero-bcg.jpeg';
+import productsReducer from '../reducers/products_reducer';
+import { useProductsContext } from '../context/products_context';
 
-const AboutPage = () => {
+const AboutPage: React.FC = () => {
+  
+  const { single_product } = useProductsContext() ?? {}
+
   return (
     <main>
-      <PageHero title="about" />
+      <PageHero title="about" product={single_product}/>
       <Wrapper className="page section section-center">
         <img src={aboutImg} alt="nice desk" />
         <article>
