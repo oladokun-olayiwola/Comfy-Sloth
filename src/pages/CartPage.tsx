@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
 import { CartContent, PageHero } from '../components'
+import { useProductsContext } from '../context/products_context'
 
-const CartPage = () => {
+const CartPage: React.FC = () => {
+  const { single_product } = useProductsContext() ?? {}
   const { cart } = useCartContext()
   if (cart.length < 1) {
     return (
@@ -20,7 +22,7 @@ const CartPage = () => {
   }
   return (
     <main>
-      <PageHero title='cart' />
+      <PageHero title='cart' product={single_product}/>
       <Wrapper className='page'>
         <CartContent />
       </Wrapper>

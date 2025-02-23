@@ -2,15 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import { PageHero, StripeCheckout } from '../components'
 
-// extra imports
 import { useCartContext } from '../context/cart_context'
 import { Link } from 'react-router-dom'
+import { useProductsContext } from '../context/products_context'
 
-const CheckoutPage = () => {
+const CheckoutPage: React.FC = () => {
+    const { single_product } = useProductsContext() ?? {}
   const { cart } = useCartContext()
   return (
     <main>
-      <PageHero title='checkout' />
+      <PageHero title='checkout' product={single_product}/>
       <Wrapper className='page'>
         {cart.length < 1 ? (
           <div className='empty'>
