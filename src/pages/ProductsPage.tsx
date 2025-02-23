@@ -1,11 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Filters, ProductList, Sort, PageHero } from '../components'
+import { useProductsContext } from '../context/products_context'
 
 const ProductsPage = () => {
+
+  const { single_product } = useProductsContext() ?? {}
+
   return (
     <main>
-      <PageHero title='products' />
+      <PageHero title='products' product={single_product}/>
       <Wrapper className='page'>
         <div className='section-center products'>
           <Filters />
