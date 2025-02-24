@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { ProductImagesProp } from '../interfaces/componentTypes'
 
-const ProductImages = ({ images = [{ url: '' }] }) => {
+const ProductImages: React.FC<ProductImagesProp> = ({ images = [{ url: '', filename: ''}] }) => {
   const [main, setMain] = useState(images[0])
   return (
     <Wrapper>
