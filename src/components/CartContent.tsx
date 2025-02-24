@@ -6,7 +6,7 @@ import CartColumns from './CartColumns'
 import CartItem from './CartItem'
 import CartTotals from './CartTotals'
 
-const CartContent = () => {
+const CartContent: React.FC = () => {
   const { cart, clearCart } = useCartContext()
   return (
     <Wrapper className='section section-center'>

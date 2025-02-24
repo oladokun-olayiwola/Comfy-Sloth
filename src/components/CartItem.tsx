@@ -4,7 +4,9 @@ import { formatPrice } from '../utils/helpers'
 import AmountButtons from './AmountButtons'
 import { FaTrash } from 'react-icons/fa'
 import { useCartContext } from '../context/cart_context'
-const CartItem = ({ id, image, name, color, price, amount }) => {
+import { CartItemProps } from '../interfaces/componentTypes'
+
+const CartItem: React.FC<CartItemProps> = ({ id, image, name, color, price, amount }) => {
   const { removeItem, toggleAmount } = useCartContext()
   const increase = () => {
     toggleAmount(id, 'inc')

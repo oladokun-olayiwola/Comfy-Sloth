@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Contact = () => {
+const Contact: React.FC = () => {
   return (
     <Wrapper>
       <div className="section-center">
