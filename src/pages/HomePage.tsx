@@ -1,6 +1,6 @@
 import React from 'react'
 import { FeaturedProducts, Hero, Services, Contact } from '../components'
-const HomePage = () => {
+const HomePage: React.FC = () => {
   return (
     <main>
       <Hero />
