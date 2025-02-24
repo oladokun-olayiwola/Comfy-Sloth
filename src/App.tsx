@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Navbar, Sidebar, Footer } from './components';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Navbar, Sidebar, Footer } from "./components";
 import {
   Home,
   SingleProduct,
@@ -10,9 +10,9 @@ import {
   Products,
   PrivateRoute,
   AuthWrapper,
-} from './pages';
+} from "./pages";
 
-function App() {
+const App: React.FC = () => {
   return (
     <AuthWrapper>
       <Router>
@@ -38,6 +38,6 @@ function App() {
       </Router>
     </AuthWrapper>
   );
-}
+};
 
 export default App;
