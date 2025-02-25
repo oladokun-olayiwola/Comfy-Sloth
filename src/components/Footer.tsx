@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-const Footer = () => {
+const Footer: React.FC = () => {
   return (
     <Wrapper>
       <h5>
