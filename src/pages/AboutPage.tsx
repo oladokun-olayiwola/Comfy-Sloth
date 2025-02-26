@@ -7,7 +7,7 @@ import { useProductsContext } from '../context/products_context';
 
 const AboutPage: React.FC = () => {
   
-  const { single_product } = useProductsContext() ?? {}
+  const { single_product } = useProductsContext()
 
   return (
     <main>
