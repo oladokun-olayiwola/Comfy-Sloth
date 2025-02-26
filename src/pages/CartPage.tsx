@@ -6,7 +6,7 @@ import { CartContent, PageHero } from '../components'
 import { useProductsContext } from '../context/products_context'
 
 const CartPage: React.FC = () => {
-  const { single_product } = useProductsContext() ?? {}
+  const { single_product } = useProductsContext();
   const { cart } = useCartContext()
   if (cart.length < 1) {
     return (
