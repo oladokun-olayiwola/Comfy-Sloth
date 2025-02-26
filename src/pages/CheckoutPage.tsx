@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import { useProductsContext } from '../context/products_context'
 
 const CheckoutPage: React.FC = () => {
-    const { single_product } = useProductsContext() ?? {}
+    const { single_product } = useProductsContext();
   const { cart } = useCartContext()
   return (
     <main>
