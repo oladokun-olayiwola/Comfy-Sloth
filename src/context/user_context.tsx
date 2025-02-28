@@ -20,5 +20,9 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 }
 // make sure use
 export const useUserContext = () => {
-  return useContext(UserContext)
+  const context = useContext(UserContext);
+    if (!context) {
+      throw new Error('useCartContext must be used within a CartProvider');
+    }
+    return context;
 }

@@ -1,4 +1,10 @@
-import React, { useEffect, useContext, useReducer, createContext } from 'react';
+import React, {
+  useEffect,
+  useContext,
+  useReducer,
+  createContext,
+  useState,
+} from 'react';
 import reducer from '../reducers/filter_reducer';
 import {
   LOAD_PRODUCTS,
@@ -37,10 +43,13 @@ const initialState: FilterState = {
 const FilterContext = createContext<FilterContextValue | null>(null);
 
 export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
-  const { products } = useProductsContext();
+  const { products } = useProductsContext()
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+    if (!products || products.length === 0) {
+      return;
+    }
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
 
@@ -56,8 +65,6 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
     dispatch({ type: SET_LISTVIEW });
   };
   const updateSort = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // for demonstration
-    // const name = e.target.name
     const value = e.target.value;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
@@ -96,7 +103,10 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
     </FilterContext.Provider>
   );
 };
-// make sure use
 export const useFilterContext = () => {
-  return useContext(FilterContext);
+  const context = useContext(FilterContext);
+    if (!context) {
+      throw new Error('useCartContext must be used within a CartProvider');
+    }
+    return context;
 };

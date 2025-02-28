@@ -26,7 +26,7 @@ const initialState: ProductState = {
     id: '',
     name: '',
     price: 0,
-    image: '',
+    image: {url: ''},
     colors: [],
     company: '',
     description: '',
@@ -83,7 +83,11 @@ export const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) =
     </ProductsContext.Provider>
   )
 }
-// make sure use
+
 export const useProductsContext = () => {
-  return useContext(ProductsContext)
+  const context = useContext(ProductsContext);
+    if (!context) {
+      throw new Error('useCartContext must be used within a CartProvider');
+    }
+    return context;
 }
