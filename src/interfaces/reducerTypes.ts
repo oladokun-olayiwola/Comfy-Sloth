@@ -21,6 +21,7 @@ import {
   UPDATE_FILTERS,
   UPDATE_SORT,
 } from '../actions';
+import { ProductImage } from './componentTypes';
 
 // Cart Reducer
 export interface CartItem {
@@ -58,7 +59,7 @@ export interface Product {
   id: string;
   name: string;
   price: number;
-  image: string;
+  image: ProductImage;
   colors: Array<string>;
   company: string;
   description: string;
