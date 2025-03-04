@@ -47,3 +47,8 @@ export interface AmountButtonsProps {
   decrease: number;
   amount: number;
 }
+
+export interface StarsProp {
+  stars: number;
+  reviews: number;
+}
