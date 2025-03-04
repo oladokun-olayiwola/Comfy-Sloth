@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { services } from '../utils/constants';
 
-const Services = () => {
+const Services: React.FC = () => {
   return (
     <Wrapper>
       <div className="section-center">
