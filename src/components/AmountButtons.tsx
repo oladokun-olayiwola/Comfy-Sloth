@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FaPlus, FaMinus } from 'react-icons/fa'
+import { AmountButtonsProps } from '../interfaces/componentTypes'
 
-const AmountButtons = ({ increase, decrease, amount }) => {
+const AmountButtons: React.FC<AmountButtonsProps> = ({ increase, decrease, amount }) => {
   return (
     <Wrapper className='amount-btsn'>
       <button type='button' className='amount-btn' onClick={decrease}>
