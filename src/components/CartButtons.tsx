@@ -6,7 +6,7 @@ import { useProductsContext } from '../context/products_context'
 import { useCartContext } from '../context/cart_context'
 import { useUserContext } from '../context/user_context'
 
-const CartButtons = () => {
+const CartButtons: React.FC = () => {
   const { closeSidebar } = useProductsContext()
   const { total_items, clearCart } = useCartContext()
   const { loginWithRedirect, myUser, logout } = useUserContext()
@@ -30,7 +30,7 @@ const CartButtons = () => {
           }}
         >
           Logout <FaUserMinus />
-        </button>
+        </button> 
       ) : (
         <button type='button' className='auth-btn' onClick={loginWithRedirect}>
           Login <FaUserPlus />
