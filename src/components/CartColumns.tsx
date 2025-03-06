@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const CartColumns = () => {
+const CartColumns: React.FC = () => {
   return (
     <Wrapper>
       <div className='content'>
