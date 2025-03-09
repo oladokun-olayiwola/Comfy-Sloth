@@ -8,7 +8,7 @@ import styled from 'styled-components'
 import CartButtons from './CartButtons'
 import { useUserContext } from '../context/user_context'
 
-const Sidebar = () => {
+const Sidebar: React.FC = () => {
   const { isSidebarOpen, closeSidebar } = useProductsContext()
   const { myUser } = useUserContext()
 
