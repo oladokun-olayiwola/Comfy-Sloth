@@ -64,11 +64,11 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
   const setListView = () => {
     dispatch({ type: SET_LISTVIEW });
   };
-  const updateSort = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateSort = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const value = e.target.value;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
-  const updateFilters = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const updateFilters = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     let { name, value }: { name: string; value: string | number | boolean } =
       e.target;
     if (name === 'category') {
@@ -80,7 +80,7 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
     if (name === 'price') {
       value = value ? Number(value) : 200;
     }
-    if (name === 'shipping') {
+    if (name === 'shipping' && e.target instanceof HTMLInputElement) {
       value = e.target.checked;
     }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });

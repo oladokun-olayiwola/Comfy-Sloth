@@ -71,8 +71,8 @@ export interface FilterProviderProps {
 export interface FilterContextValue extends FilterState {
   setGridView: () => void;
   setListView: () => void;
-  updateSort: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  updateFilters: (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | React.MouseEvent<HTMLButtonElement>) => void;
+  updateSort: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  updateFilters: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
   clearFilters: () => void;
 }
 export interface ProductState {
@@ -106,5 +106,5 @@ export interface UserProviderProps {
 }
 export interface UserContextValue extends UserState {
   loginWithRedirect: () => void;
-  logout: () => void;
+  logout: (args: { returnTo: string }) => void;
 }
