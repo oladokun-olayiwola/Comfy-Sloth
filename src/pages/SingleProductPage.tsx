@@ -14,7 +14,7 @@ import {
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
-const SingleProductPage = () => {
+const SingleProductPage: React.FC = () => {
   const { id } = useParams()
   const navigate = useNavigate()
   const {
@@ -32,7 +32,7 @@ const SingleProductPage = () => {
   useEffect(() => {
     if (error) {
       setTimeout(() => {
-        navigate.push('/')
+        navigate('/')
       }, 3000)
     }
     // eslint-disable-next-line
@@ -44,6 +44,7 @@ const SingleProductPage = () => {
   if (error) {
     return <Error />
   }
+  if (!product) return <Error />
   const {
     name,
     price,
@@ -53,17 +54,17 @@ const SingleProductPage = () => {
     reviews,
     id: sku,
     company,
-    images,
+    image,
   } = product
   return (
     <Wrapper>
-      <PageHero title={name} product />
+      <PageHero title={name} product={product} />
       <div className='section section-center page'>
         <Link to='/products' className='btn'>
           back to products
         </Link>
         <div className=' product-center'>
-          <ProductImages images={images} />
+          <ProductImages images={[image]} />
           <section className='content'>
             <h2>{name}</h2>
             <Stars stars={stars} reviews={reviews} />
