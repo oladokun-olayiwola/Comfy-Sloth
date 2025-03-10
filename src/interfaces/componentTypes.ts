@@ -39,12 +39,13 @@ export interface ProductProps {
 }
 
 export interface GridViewProps {
-  products: Product[]
+  products: Product[];
+  children?: ReactNode;
 }
 
 export interface AmountButtonsProps {
-  increase: number;
-  decrease: number;
+  increase: () => void;
+  decrease: () => void;
   amount: number;
 }
 
