@@ -5,7 +5,7 @@ import { useUserContext } from '../context/user_context'
 import { formatPrice } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 
-const CartTotals = () => {
+const CartTotals: React.FC = () => {
   const { total_amount, shipping_fee } = useCartContext()
   const { myUser, loginWithRedirect } = useUserContext()
 
