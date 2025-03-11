@@ -19,10 +19,10 @@ const Services: React.FC = () => {
         </article>
         <div className="services-center">
           {services.map(service => {
-            const { id, icon, title, text } = service;
+            const { id, icon: Icon, title, text } = service;
             return (
               <article key={id} className="service">
-                <span className="icon">{icon} </span>
+                <span className="icon"><Icon /> </span>
                 <h4>{title}</h4>
                 <p>{text}</p>
               </article>
