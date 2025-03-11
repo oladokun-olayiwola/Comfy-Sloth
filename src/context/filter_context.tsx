@@ -3,7 +3,6 @@ import React, {
   useContext,
   useReducer,
   createContext,
-  useState,
 } from 'react';
 import reducer from '../reducers/filter_reducer';
 import {
@@ -68,23 +67,43 @@ export const FilterProvider: React.FC<FilterProviderProps> = ({ children }) => {
     const value = e.target.value;
     dispatch({ type: UPDATE_SORT, payload: value });
   };
-  const updateFilters = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    let { name, value }: { name: string; value: string | number | boolean } =
-      e.target;
-    if (name === 'category') {
-      value = e.target.textContent ?? '';
+  const updateFilters = (
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      | React.MouseEvent<HTMLButtonElement>
+  ) => {
+    let name: string = '';
+    let value: string | number | boolean = '';
+    if (e.type === 'change') {
+      const target = e.target as HTMLInputElement | HTMLSelectElement;
+      name = target.name;
+      value = target.value;
+      if (name === 'price') {
+        value = value ? Number(value) : 200;
+      }
+
+      if (name === 'shipping' && target instanceof HTMLInputElement) {
+        value = target.checked;
+      }
     }
-    if (name === 'color') {
-      value = e.target.dataset.color ?? '';
+
+    // Handle button clicks (category, color)
+    if (e.type === 'click') {
+      const target = e.target as HTMLButtonElement;
+      name = target.name;
+
+      if (name === 'category') {
+        value = target.textContent ?? '';
+      }
+
+      if (name === 'color') {
+        value = target.dataset.color ?? '';
+      }
     }
-    if (name === 'price') {
-      value = value ? Number(value) : 200;
-    }
-    if (name === 'shipping' && e.target instanceof HTMLInputElement) {
-      value = e.target.checked;
-    }
+
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
+  
   const clearFilters = () => {
     dispatch({ type: CLEAR_FILTERS });
   };
