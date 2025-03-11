@@ -1,6 +1,6 @@
-import { ReactNode } from 'react';
-import { Product } from './reducerTypes';
-import { User } from '@auth0/auth0-react';
+import { ReactNode } from "react";
+import { Product } from "./reducerTypes";
+import { User } from "@auth0/auth0-react";
 
 // reducerTypes.ts
 export interface CartItem {
@@ -26,21 +26,21 @@ export interface CartProviderProps {
 
 export type CartAction =
   | {
-      type: 'ADD_TO_CART';
+      type: "ADD_TO_CART";
       payload: { id: string; color: string; amount: number; product: any };
     }
-  | { type: 'REMOVE_CART_ITEM'; payload: string }
+  | { type: "REMOVE_CART_ITEM"; payload: string }
   | {
-      type: 'TOGGLE_CART_ITEM_AMOUNT';
-      payload: { id: string; value: 'inc' | 'dec' };
+      type: "TOGGLE_CART_ITEM_AMOUNT";
+      payload: { id: string; value: "inc" | "dec" };
     }
-  | { type: 'CLEAR_CART' }
-  | { type: 'COUNT_CART_TOTALS' };
+  | { type: "CLEAR_CART" }
+  | { type: "COUNT_CART_TOTALS" };
 
 export interface CartContextValue extends CartState {
   addToCart: (id: string, color: string, amount: number, product: any) => void;
   removeItem: (id: string) => void;
-  toggleAmount: (id: string, value: 'inc' | 'dec') => void;
+  toggleAmount: (id: string, value: "inc" | "dec") => void;
   clearCart: () => void;
 }
 
@@ -71,8 +71,14 @@ export interface FilterProviderProps {
 export interface FilterContextValue extends FilterState {
   setGridView: () => void;
   setListView: () => void;
-  updateSort: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
-  updateFilters: (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | React.MouseEvent<HTMLButtonElement>) => void;
+  updateSort: (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => void;
+  updateFilters: (
+    e:
+      | React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+      | React.MouseEvent<HTMLButtonElement>,
+  ) => void;
   clearFilters: () => void;
 }
 export interface ProductState {
@@ -96,7 +102,7 @@ export interface ProductContextValue extends ProductState {
   fetchSingleProduct: (url: string) => void;
 }
 
-// User Context 
+// User Context
 
 export interface UserState {
   myUser?: User;

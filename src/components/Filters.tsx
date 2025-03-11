@@ -1,47 +1,58 @@
-import React, { ChangeEvent, MouseEvent } from 'react';
-import styled from 'styled-components';
-import { useFilterContext } from '../context/filter_context';
-import { getUniqueValues, formatPrice } from '../utils/helpers';
-import { FaCheck } from 'react-icons/fa';
+import React, { ChangeEvent, MouseEvent } from "react";
+import styled from "styled-components";
+import { useFilterContext } from "../context/filter_context";
+import { getUniqueValues, formatPrice } from "../utils/helpers";
+import { FaCheck } from "react-icons/fa";
 
 const Filters: React.FC = () => {
   const {
-    filters: { text, category, company, color, min_price, price, max_price, shipping },
+    filters: {
+      text,
+      category,
+      company,
+      color,
+      min_price,
+      price,
+      max_price,
+      shipping,
+    },
     updateFilters,
     clearFilters,
     all_products,
   } = useFilterContext();
 
-  const categories = getUniqueValues(all_products, 'category') as string[];
-  const companies = getUniqueValues(all_products, 'company') as string[];
-  const colors = getUniqueValues(all_products, 'colors') as string[];
+  const categories = getUniqueValues(all_products, "category") as string[];
+  const companies = getUniqueValues(all_products, "company") as string[];
+  const colors = getUniqueValues(all_products, "colors") as string[];
 
   return (
     <Wrapper>
-      <div className='content'>
+      <div className="content">
         <form onSubmit={(e) => e.preventDefault()}>
           {/* Search input */}
-          <div className='form-control'>
+          <div className="form-control">
             <input
-              type='text'
-              name='text'
-              placeholder='search'
-              className='search-input'
+              type="text"
+              name="text"
+              placeholder="search"
+              className="search-input"
               value={text}
               onChange={updateFilters}
             />
           </div>
           {/* Categories */}
-          <div className='form-control'>
+          <div className="form-control">
             <h5>Category</h5>
             <div>
               {categories.map((c, index) => (
                 <button
                   key={index}
-                  onClick={(e: MouseEvent<HTMLButtonElement>) => updateFilters(e)}
-                  type='button'
-                  name='category'
-                  className={`${category === c.toLowerCase() ? 'active' : ''}`}
+                  onClick={(e: MouseEvent<HTMLButtonElement>) =>
+                    updateFilters(e)
+                  }
+                  type="button"
+                  name="category"
+                  className={`${category === c.toLowerCase() ? "active" : ""}`}
                 >
                   {c}
                 </button>
@@ -49,31 +60,35 @@ const Filters: React.FC = () => {
             </div>
           </div>
           {/* Companies */}
-          <div className='form-control'>
+          <div className="form-control">
             <h5>Company</h5>
             <select
-              name='company'
+              name="company"
               value={company}
               onChange={(e: ChangeEvent<HTMLSelectElement>) => updateFilters(e)}
-              className='company'
+              className="company"
             >
               {companies.map((c, index) => (
-                <option key={index} value={c}>{c}</option>
+                <option key={index} value={c}>
+                  {c}
+                </option>
               ))}
             </select>
           </div>
           {/* Colors */}
-          <div className='form-control'>
+          <div className="form-control">
             <h5>Colors</h5>
-            <div className='colors'>
+            <div className="colors">
               {colors.map((c, index) => (
                 <button
                   key={index}
-                  name='color'
+                  name="color"
                   style={{ background: c }}
-                  className={`${color === c ? 'color-btn active' : 'color-btn'}`}
+                  className={`${color === c ? "color-btn active" : "color-btn"}`}
                   data-color={c}
-                  onClick={(e: MouseEvent<HTMLButtonElement>) => updateFilters(e)}
+                  onClick={(e: MouseEvent<HTMLButtonElement>) =>
+                    updateFilters(e)
+                  }
                 >
                   {color === c ? <FaCheck /> : null}
                 </button>
@@ -81,12 +96,12 @@ const Filters: React.FC = () => {
             </div>
           </div>
           {/* Price */}
-          <div className='form-control'>
+          <div className="form-control">
             <h5>Price</h5>
-            <p className='price'>{formatPrice(price)}</p>
+            <p className="price">{formatPrice(price)}</p>
             <input
-              type='range'
-              name='price'
+              type="range"
+              name="price"
               min={min_price}
               max={max_price}
               onChange={(e: ChangeEvent<HTMLInputElement>) => updateFilters(e)}
@@ -94,18 +109,18 @@ const Filters: React.FC = () => {
             />
           </div>
           {/* Shipping */}
-          <div className='form-control shipping'>
-            <label htmlFor='shipping'> Free Shipping</label>
+          <div className="form-control shipping">
+            <label htmlFor="shipping"> Free Shipping</label>
             <input
-              type='checkbox'
-              name='shipping'
-              id='shipping'
+              type="checkbox"
+              name="shipping"
+              id="shipping"
               onChange={(e: ChangeEvent<HTMLInputElement>) => updateFilters(e)}
               checked={shipping}
             />
           </div>
         </form>
-        <button type='button' className='clear-btn' onClick={clearFilters}>
+        <button type="button" className="clear-btn" onClick={clearFilters}>
           Clear Filters
         </button>
       </div>
@@ -210,6 +225,6 @@ const Wrapper = styled.section`
       top: 1rem;
     }
   }
-`
+`;
 
 export default Filters;

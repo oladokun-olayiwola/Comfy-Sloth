@@ -23,13 +23,13 @@ export interface CartItemProps {
 export interface ListViewProps {
   products: Product[];
 }
- export interface ProductImage {
+export interface ProductImage {
   url: string;
   filename?: string;
 }
 
 export interface ProductImagesProp {
-  images: Array<ProductImage>
+  images: Array<ProductImage>;
 }
 export interface ProductProps {
   image: ProductImage;

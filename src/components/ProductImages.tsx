@@ -1,13 +1,15 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import { ProductImagesProp } from '../interfaces/componentTypes'
+import React, { useState } from "react";
+import styled from "styled-components";
+import { ProductImagesProp } from "../interfaces/componentTypes";
 
-const ProductImages: React.FC<ProductImagesProp> = ({ images = [{ url: '', filename: ''}] }) => {
-  const [main, setMain] = useState(images[0])
+const ProductImages: React.FC<ProductImagesProp> = ({
+  images = [{ url: "", filename: "" }],
+}) => {
+  const [main, setMain] = useState(images[0]);
   return (
     <Wrapper>
-      <img src={main.url} alt='main' className='main' />
-      <div className='gallery'>
+      <img src={main.url} alt="main" className="main" />
+      <div className="gallery">
         {images.map((image, index) => {
           return (
             <img
@@ -15,14 +17,14 @@ const ProductImages: React.FC<ProductImagesProp> = ({ images = [{ url: '', filen
               alt={image.filename}
               key={index}
               onClick={() => setMain(images[index])}
-              className={`${image.url === main.url ? 'active' : null}`}
+              className={`${image.url === main.url ? "active" : null}`}
             />
-          )
+          );
         })}
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   .main {
@@ -67,6 +69,6 @@ const Wrapper = styled.section`
       }
     }
   }
-`
+`;
 
-export default ProductImages
+export default ProductImages;

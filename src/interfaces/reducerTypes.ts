@@ -20,8 +20,8 @@ import {
   TOGGLE_CART_ITEM_AMOUNT,
   UPDATE_FILTERS,
   UPDATE_SORT,
-} from '../actions';
-import { ProductImage } from './componentTypes';
+} from "../actions";
+import { ProductImage } from "./componentTypes";
 
 // Cart Reducer
 export interface CartItem {
@@ -50,7 +50,7 @@ export type CartAction =
   | { type: typeof CLEAR_CART }
   | {
       type: typeof TOGGLE_CART_ITEM_AMOUNT;
-      payload: { id: string; value: 'inc' | 'dec' };
+      payload: { id: string; value: "inc" | "dec" };
     }
   | { type: typeof COUNT_CART_TOTALS };
 

@@ -1,7 +1,13 @@
-import axios from 'axios'
-import React, { createContext, useCallback, useContext, useEffect, useReducer } from 'react'
-import reducer from '../reducers/products_reducer'
-import { products_url as url } from '../utils/constants'
+import axios from "axios";
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+} from "react";
+import reducer from "../reducers/products_reducer";
+import { products_url as url } from "../utils/constants";
 import {
   SIDEBAR_OPEN,
   SIDEBAR_CLOSE,
@@ -11,8 +17,12 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
-} from '../actions'
-import { ProductState, ProductContextValue, ProductProviderProps } from '../interfaces/contextTypes'
+} from "../actions";
+import {
+  ProductState,
+  ProductContextValue,
+  ProductProviderProps,
+} from "../interfaces/contextTypes";
 
 const initialState: ProductState = {
   isSidebarOpen: false,
@@ -23,59 +33,61 @@ const initialState: ProductState = {
   single_product_loading: false,
   single_product_error: false,
   single_product: {
-    id: '',
-    name: '',
+    id: "",
+    name: "",
     price: 0,
-    image: {url: ''},
+    image: { url: "" },
     colors: [],
-    company: '',
-    description: '',
+    company: "",
+    description: "",
     featured: false,
-    category: '',
+    category: "",
     shipping: false,
     stock: 0,
     stars: 3,
     reviews: 3,
   },
-}
+};
 
-const ProductsContext = createContext<ProductContextValue | null>(null)
+const ProductsContext = createContext<ProductContextValue | null>(null);
 
-export const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState)
+export const ProductsProvider: React.FC<ProductProviderProps> = ({
+  children,
+}) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const openSidebar = () => {
-    dispatch({ type: SIDEBAR_OPEN })
-  }
+    dispatch({ type: SIDEBAR_OPEN });
+  };
   const closeSidebar = () => {
-    dispatch({ type: SIDEBAR_CLOSE })
-  }
+    dispatch({ type: SIDEBAR_CLOSE });
+  };
 
   const fetchProducts = useCallback(async (url: string) => {
-    dispatch({ type: GET_PRODUCTS_BEGIN })
+    dispatch({ type: GET_PRODUCTS_BEGIN });
     try {
-      const response = await axios.get(url)
-      const products = response.data
-      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products })
+      const response = await axios.get(url);
+      const products = response.data;
+      dispatch({ type: GET_PRODUCTS_SUCCESS, payload: products });
     } catch (error) {
-      dispatch({ type: GET_PRODUCTS_ERROR })
+      dispatch({ type: GET_PRODUCTS_ERROR });
     }
-  }, [])
+  }, []);
 
   const fetchSingleProduct = async (url: string) => {
-    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN })
+    dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
     try {
-      const response = await axios.get(url)
-      const singleProduct = response.data
-      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct })
+      const response = await axios.get(url);
+      const singleProduct = response.data;
+      dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: singleProduct });
     } catch (error) {
-      dispatch({ type: GET_SINGLE_PRODUCT_ERROR })
+      dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
     }
-  }
+  };
 
   useEffect(() => {
-    fetchProducts(url)
-  }, [fetchProducts])
+    fetchProducts(url);
+  }, [fetchProducts]);
 
   return (
     <ProductsContext.Provider
@@ -83,13 +95,13 @@ export const ProductsProvider: React.FC<ProductProviderProps> = ({ children }) =
     >
       {children}
     </ProductsContext.Provider>
-  )
-}
+  );
+};
 
 export const useProductsContext = () => {
   const context = useContext(ProductsContext);
-    if (!context) {
-      throw new Error('useCartContext must be used within a CartProvider');
-    }
-    return context;
-}
+  if (!context) {
+    throw new Error("useCartContext must be used within a CartProvider");
+  }
+  return context;
+};

@@ -1,13 +1,14 @@
-import React from 'react'
-import { useProductsContext } from '../context/products_context'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
-import Error from './Error'
-import Loading from './Loading'
-import Product from './Product'
+import React from "react";
+import { useProductsContext } from "../context/products_context";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import Error from "./Error";
+import Loading from "./Loading";
+import Product from "./Product";
 
 const FeaturedProducts: React.FC = () => {
-  const { products_loading, products_error, featured_products } = useProductsContext()
+  const { products_loading, products_error, featured_products } =
+    useProductsContext();
 
   if (products_loading) return <Loading />;
   if (products_error) return <Error />;
@@ -51,6 +52,6 @@ const Wrapper = styled.section`
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
     }
   }
-`
+`;
 
-export default FeaturedProducts
+export default FeaturedProducts;

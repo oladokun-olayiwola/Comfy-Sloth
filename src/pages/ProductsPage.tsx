@@ -1,17 +1,16 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Filters, ProductList, Sort, PageHero } from '../components'
-import { useProductsContext } from '../context/products_context'
+import React from "react";
+import styled from "styled-components";
+import { Filters, ProductList, Sort, PageHero } from "../components";
+import { useProductsContext } from "../context/products_context";
 
 const ProductsPage: React.FC = () => {
-
-  const { single_product } = useProductsContext()
+  const { single_product } = useProductsContext();
 
   return (
     <main>
-      <PageHero title='products' product={single_product}/>
-      <Wrapper className='page'>
-        <div className='section-center products'>
+      <PageHero title="products" product={single_product} />
+      <Wrapper className="page">
+        <div className="section-center products">
           <Filters />
           <div>
             <Sort />
@@ -20,8 +19,8 @@ const ProductsPage: React.FC = () => {
         </div>
       </Wrapper>
     </main>
-  )
-}
+  );
+};
 
 const Wrapper = styled.div`
   .products {
@@ -34,6 +33,6 @@ const Wrapper = styled.div`
       grid-template-columns: 200px 1fr;
     }
   }
-`
+`;
 
-export default ProductsPage
+export default ProductsPage;

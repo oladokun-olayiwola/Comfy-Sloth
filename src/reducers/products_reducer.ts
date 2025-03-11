@@ -7,10 +7,17 @@ import {
   GET_SINGLE_PRODUCT_BEGIN,
   GET_SINGLE_PRODUCT_SUCCESS,
   GET_SINGLE_PRODUCT_ERROR,
-} from '../actions';
-import { ProductState, ProductAction, Product } from '../interfaces/reducerTypes';
+} from "../actions";
+import {
+  ProductState,
+  ProductAction,
+  Product,
+} from "../interfaces/reducerTypes";
 
-const productsReducer = (state: ProductState, action: ProductAction): ProductState => {
+const productsReducer = (
+  state: ProductState,
+  action: ProductAction,
+): ProductState => {
   switch (action.type) {
     case SIDEBAR_OPEN:
       return { ...state, isSidebarOpen: true };
@@ -23,19 +30,35 @@ const productsReducer = (state: ProductState, action: ProductAction): ProductSta
         ...state,
         products_loading: false,
         products: action.payload,
-        featured_products: action.payload.filter((product: Product) => product.featured === true), // ✅ No more implicit 'any'
+        featured_products: action.payload.filter(
+          (product: Product) => product.featured === true,
+        ), // ✅ No more implicit 'any'
       };
     case GET_PRODUCTS_ERROR:
       return { ...state, products_loading: false, products_error: true };
     case GET_SINGLE_PRODUCT_BEGIN:
-      return { ...state, single_product_loading: true, single_product_error: false };
+      return {
+        ...state,
+        single_product_loading: true,
+        single_product_error: false,
+      };
     case GET_SINGLE_PRODUCT_SUCCESS:
-      return { ...state, single_product_loading: false, single_product: action.payload };
+      return {
+        ...state,
+        single_product_loading: false,
+        single_product: action.payload,
+      };
     case GET_SINGLE_PRODUCT_ERROR:
-      return { ...state, single_product_loading: false, single_product_error: true };
+      return {
+        ...state,
+        single_product_loading: false,
+        single_product_error: true,
+      };
     default:
-      throw new Error(`No Matching "${(action as ProductAction).type}" - action type`);
+      throw new Error(
+        `No Matching "${(action as ProductAction).type}" - action type`,
+      );
   }
 };
 
-export default productsReducer
+export default productsReducer;

@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { loadStripe } from '@stripe/stripe-js';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
+import { loadStripe } from "@stripe/stripe-js";
 import {
   CardElement,
   useStripe,
   Elements,
   useElements,
-} from '@stripe/react-stripe-js';
-import axios from 'axios';
-import { useCartContext } from '../context/cart_context';
-import { useUserContext } from '../context/user_context';
-import { formatPrice } from '../utils/helpers';
-import { useNavigate } from 'react-router-dom';
-import { StripeCardElementChangeEvent } from '@stripe/stripe-js';
+} from "@stripe/react-stripe-js";
+import axios from "axios";
+import { useCartContext } from "../context/cart_context";
+import { useUserContext } from "../context/user_context";
+import { formatPrice } from "../utils/helpers";
+import { useNavigate } from "react-router-dom";
+import { StripeCardElementChangeEvent } from "@stripe/stripe-js";
 
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY || '');
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLIC_KEY || "");
 
 const CheckoutForm: React.FC = () => {
   const { cart, total_amount, shipping_fee, clearCart } = useCartContext();
@@ -27,30 +27,31 @@ const CheckoutForm: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [processing, setProcessing] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState('');
+  const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
     const createPaymentIntent = async () => {
       try {
-        const { data } = await axios.post('/.netlify/functions/create-payment-intent', {
-          cart,
-          shipping_fee,
-          total_amount,
-        });
+        const { data } = await axios.post(
+          "/.netlify/functions/create-payment-intent",
+          {
+            cart,
+            shipping_fee,
+            total_amount,
+          },
+        );
         setClientSecret(data.clientSecret);
       } catch (error) {
-        console.error('Error creating payment intent:', error);
+        console.error("Error creating payment intent:", error);
       }
     };
     createPaymentIntent();
   }, [cart, shipping_fee, total_amount]);
 
-
-const handleChange = async (event: StripeCardElementChangeEvent) => {
-  setDisabled(event.empty);
-  setError(event.error ? event.error.message : '');
-};
-
+  const handleChange = async (event: StripeCardElementChangeEvent) => {
+    setDisabled(event.empty);
+    setError(event.error ? event.error.message : "");
+  };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -72,7 +73,7 @@ const handleChange = async (event: StripeCardElementChangeEvent) => {
       setSucceeded(true);
       setTimeout(() => {
         clearCart();
-        navigate('/');
+        navigate("/");
       }, 10000);
     }
   };
@@ -95,12 +96,21 @@ const handleChange = async (event: StripeCardElementChangeEvent) => {
       <form id="payment-form" onSubmit={handleSubmit}>
         <CardElement id="card-element" onChange={handleChange} />
         <button disabled={processing || disabled || succeeded} id="submit">
-          <span id="button-text">{processing ? <div className="spinner" /> : 'Pay'}</span>
+          <span id="button-text">
+            {processing ? <div className="spinner" /> : "Pay"}
+          </span>
         </button>
-        {error && <div className="card-error" role="alert">{error}</div>}
-        <p className={succeeded ? 'result-message' : 'result-message hidden'}>
+        {error && (
+          <div className="card-error" role="alert">
+            {error}
+          </div>
+        )}
+        <p className={succeeded ? "result-message" : "result-message hidden"}>
           Payment succeeded, see the result in your
-          <a href="https://dashboard.stripe.com/test/payments"> Stripe dashboard.</a>
+          <a href="https://dashboard.stripe.com/test/payments">
+            {" "}
+            Stripe dashboard.
+          </a>
           Refresh the page to pay again.
         </p>
       </form>

@@ -1,22 +1,22 @@
-import React from 'react'
-import styled from 'styled-components'
-import { PageHero, StripeCheckout } from '../components'
+import React from "react";
+import styled from "styled-components";
+import { PageHero, StripeCheckout } from "../components";
 
-import { useCartContext } from '../context/cart_context'
-import { Link } from 'react-router-dom'
-import { useProductsContext } from '../context/products_context'
+import { useCartContext } from "../context/cart_context";
+import { Link } from "react-router-dom";
+import { useProductsContext } from "../context/products_context";
 
 const CheckoutPage: React.FC = () => {
-    const { single_product } = useProductsContext();
-  const { cart } = useCartContext()
+  const { single_product } = useProductsContext();
+  const { cart } = useCartContext();
   return (
     <main>
-      <PageHero title='checkout' product={single_product}/>
-      <Wrapper className='page'>
+      <PageHero title="checkout" product={single_product} />
+      <Wrapper className="page">
         {cart.length < 1 ? (
-          <div className='empty'>
+          <div className="empty">
             <h2>your cart is empty</h2>
-            <Link to='/products' className='btn'>
+            <Link to="/products" className="btn">
               fill it
             </Link>
           </div>
@@ -25,8 +25,8 @@ const CheckoutPage: React.FC = () => {
         )}
       </Wrapper>
     </main>
-  )
-}
+  );
+};
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
@@ -34,5 +34,5 @@ const Wrapper = styled.div`
   .empty {
     text-align: center;
   }
-`
-export default CheckoutPage
+`;
+export default CheckoutPage;

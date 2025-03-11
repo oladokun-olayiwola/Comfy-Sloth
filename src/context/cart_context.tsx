@@ -1,16 +1,27 @@
-import React, { useEffect, useContext, useReducer, createContext, ReactNode } from 'react';
-import reducer from '../reducers/cart_reducer';
+import React, {
+  useEffect,
+  useContext,
+  useReducer,
+  createContext,
+  ReactNode,
+} from "react";
+import reducer from "../reducers/cart_reducer";
 import {
   ADD_TO_CART,
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
   CLEAR_CART,
   COUNT_CART_TOTALS,
-} from '../actions';
-import { CartContextValue, CartProviderProps, CartItem, CartState  } from '../interfaces/contextTypes';
+} from "../actions";
+import {
+  CartContextValue,
+  CartProviderProps,
+  CartItem,
+  CartState,
+} from "../interfaces/contextTypes";
 
 const getLocalStorage = (): CartItem[] => {
-  const cart = localStorage.getItem('cart');
+  const cart = localStorage.getItem("cart");
   return cart ? JSON.parse(cart) : [];
 };
 
@@ -27,7 +38,12 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   // Add to cart
-  const addToCart = (id: string, color: string, amount: number, product: any) => {
+  const addToCart = (
+    id: string,
+    color: string,
+    amount: number,
+    product: any,
+  ) => {
     dispatch({ type: ADD_TO_CART, payload: { id, color, amount, product } });
   };
 
@@ -37,7 +53,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   };
 
   // Toggle amount
-  const toggleAmount = (id: string, value: 'inc' | 'dec') => {
+  const toggleAmount = (id: string, value: "inc" | "dec") => {
     dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
   };
 
@@ -49,7 +65,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   // Update localStorage and cart totals
   useEffect(() => {
     dispatch({ type: COUNT_CART_TOTALS });
-    localStorage.setItem('cart', JSON.stringify(state.cart));
+    localStorage.setItem("cart", JSON.stringify(state.cart));
   }, [state.cart]);
 
   return (
@@ -65,7 +81,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
 export const useCartContext = () => {
   const context = useContext(CartContext);
   if (!context) {
-    throw new Error('useCartContext must be used within a CartProvider');
+    throw new Error("useCartContext must be used within a CartProvider");
   }
   return context;
 };

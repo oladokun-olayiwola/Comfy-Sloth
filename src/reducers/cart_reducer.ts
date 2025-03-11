@@ -4,8 +4,8 @@ import {
   COUNT_CART_TOTALS,
   REMOVE_CART_ITEM,
   TOGGLE_CART_ITEM_AMOUNT,
-} from '../actions';
-import { CartState, CartAction, CartItem } from '../interfaces/reducerTypes';
+} from "../actions";
+import { CartState, CartAction, CartItem } from "../interfaces/reducerTypes";
 
 const initialState: CartState = {
   cart: [],
@@ -14,7 +14,10 @@ const initialState: CartState = {
   shipping_fee: 534,
 };
 
-const cart_reducer = (state: CartState = initialState, action: CartAction): CartState => {
+const cart_reducer = (
+  state: CartState = initialState,
+  action: CartAction,
+): CartState => {
   switch (action.type) {
     case ADD_TO_CART: {
       const { id, color, amount, product } = action.payload;
@@ -61,9 +64,9 @@ const cart_reducer = (state: CartState = initialState, action: CartAction): Cart
       const tempCart = state.cart.map((item) => {
         if (item.id === id) {
           let newAmount = item.amount;
-          if (value === 'inc') {
+          if (value === "inc") {
             newAmount = Math.min(item.amount + 1, item.max);
-          } else if (value === 'dec') {
+          } else if (value === "dec") {
             newAmount = Math.max(item.amount - 1, 1);
           }
           return { ...item, amount: newAmount };
@@ -85,13 +88,15 @@ const cart_reducer = (state: CartState = initialState, action: CartAction): Cart
         {
           total_items: 0,
           total_amount: 0,
-        }
+        },
       );
       return { ...state, total_items, total_amount };
     }
 
     default:
-      throw new Error(`No Matching "${(action as CartAction).type}" - action type`);
+      throw new Error(
+        `No Matching "${(action as CartAction).type}" - action type`,
+      );
   }
 };
 

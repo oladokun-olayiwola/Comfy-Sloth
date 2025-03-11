@@ -7,20 +7,20 @@ import {
   UPDATE_FILTERS,
   FILTER_PRODUCTS,
   CLEAR_FILTERS,
-} from '../actions';
-import { FilterAction, FilterState } from '../interfaces/reducerTypes';
+} from "../actions";
+import { FilterAction, FilterState } from "../interfaces/reducerTypes";
 
 // Define the initial state
 const initialState: FilterState = {
   all_products: [],
   filtered_products: [],
   grid_view: true,
-  sort: '',
+  sort: "",
   filters: {
-    text: '',
-    company: 'all',
-    category: 'all',
-    color: 'all',
+    text: "",
+    company: "all",
+    category: "all",
+    color: "all",
     price: 0,
     min_price: 0,
     max_price: 0,
@@ -28,7 +28,10 @@ const initialState: FilterState = {
   },
 };
 
-const filter_reducer = (state: FilterState = initialState, action: FilterAction): FilterState => {
+const filter_reducer = (
+  state: FilterState = initialState,
+  action: FilterAction,
+): FilterState => {
   switch (action.type) {
     case LOAD_PRODUCTS: {
       const prices = action.payload.map((p) => p.price); // Array of prices
@@ -53,7 +56,7 @@ const filter_reducer = (state: FilterState = initialState, action: FilterAction)
     case SORT_PRODUCTS: {
       const { sort, filtered_products } = state;
       let tempProducts = [...filtered_products];
-      if (sort === 'price-lowest') {
+      if (sort === "price-lowest") {
         tempProducts = tempProducts.sort((a, b) => {
           if (a.price < b.price) {
             return -1;
@@ -64,15 +67,15 @@ const filter_reducer = (state: FilterState = initialState, action: FilterAction)
           return 0;
         });
       }
-      if (sort === 'price-highest') {
+      if (sort === "price-highest") {
         tempProducts = tempProducts.sort((a, b) => b.price - a.price);
       }
-      if (sort === 'name-a') {
+      if (sort === "name-a") {
         tempProducts = tempProducts.sort((a, b) => {
           return a.name.localeCompare(b.name);
         });
       }
-      if (sort === 'name-z') {
+      if (sort === "name-z") {
         tempProducts = tempProducts.sort((a, b) => {
           return b.name.localeCompare(a.name);
         });
@@ -96,20 +99,20 @@ const filter_reducer = (state: FilterState = initialState, action: FilterAction)
         });
       }
       // category
-      if (category !== 'all') {
+      if (category !== "all") {
         tempProducts = tempProducts.filter(
-          (product) => product.category === category
+          (product) => product.category === category,
         );
       }
 
       // company
-      if (company !== 'all') {
+      if (company !== "all") {
         tempProducts = tempProducts.filter(
-          (product) => product.company === company
+          (product) => product.company === company,
         );
       }
       // colors
-      if (color !== 'all') {
+      if (color !== "all") {
         tempProducts = tempProducts.filter((product) => {
           return product.colors.find((c) => c === color);
         });
@@ -118,7 +121,9 @@ const filter_reducer = (state: FilterState = initialState, action: FilterAction)
       tempProducts = tempProducts.filter((product) => product.price <= price);
       // shipping
       if (shipping) {
-        tempProducts = tempProducts.filter((product) => product.shipping === true);
+        tempProducts = tempProducts.filter(
+          (product) => product.shipping === true,
+        );
       }
 
       return { ...state, filtered_products: tempProducts };
@@ -128,17 +133,19 @@ const filter_reducer = (state: FilterState = initialState, action: FilterAction)
         ...state,
         filters: {
           ...state.filters,
-          text: '',
-          company: 'all',
-          category: 'all',
-          color: 'all',
+          text: "",
+          company: "all",
+          category: "all",
+          color: "all",
           price: state.filters.max_price,
           shipping: false,
         },
       };
     }
     default: {
-      throw new Error(`No Matching "${(action as FilterAction).type}" - action type`);
+      throw new Error(
+        `No Matching "${(action as FilterAction).type}" - action type`,
+      );
     }
   }
 };

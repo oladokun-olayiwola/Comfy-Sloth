@@ -1,5 +1,5 @@
-import React from 'react'
-import { FeaturedProducts, Hero, Services, Contact } from '../components'
+import React from "react";
+import { FeaturedProducts, Hero, Services, Contact } from "../components";
 const HomePage: React.FC = () => {
   return (
     <main>
@@ -8,7 +8,7 @@ const HomePage: React.FC = () => {
       <Services />
       <Contact />
     </main>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

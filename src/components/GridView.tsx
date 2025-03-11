@@ -1,19 +1,19 @@
-import React from 'react'
-import styled from 'styled-components'
-import Product from './Product'
-import { GridViewProps } from '../interfaces/componentTypes'
+import React from "react";
+import styled from "styled-components";
+import Product from "./Product";
+import { GridViewProps } from "../interfaces/componentTypes";
 
 const GridView: React.FC<GridViewProps> = ({ products }) => {
   return (
     <Wrapper>
-      <div className='products-container'>
+      <div className="products-container">
         {products.map((product) => {
-          return <Product key={product.id} {...product} />
+          return <Product key={product.id} {...product} />;
         })}
       </div>
     </Wrapper>
-  )
-}
+  );
+};
 
 const Wrapper = styled.section`
   img {
@@ -35,6 +35,6 @@ const Wrapper = styled.section`
       grid-template-columns: repeat(3, 1fr);
     }
   }
-`
+`;
 
-export default GridView
+export default GridView;

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { FaCheck } from 'react-icons/fa';
-import { useCartContext } from '../context/cart_context';
-import AmountButtons from './AmountButtons';
-import { Product } from '../interfaces/reducerTypes';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { FaCheck } from "react-icons/fa";
+import { useCartContext } from "../context/cart_context";
+import AmountButtons from "./AmountButtons";
+import { Product } from "../interfaces/reducerTypes";
 
 interface AddToCartProps {
   product: Product;
@@ -39,7 +39,7 @@ const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
 
   return (
     <Wrapper>
-      <div className='colors'>
+      <div className="colors">
         <span> colors : </span>
         <div>
           {colors.map((color, index) => {
@@ -48,7 +48,7 @@ const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
                 key={index}
                 style={{ background: color }}
                 className={`${
-                  mainColor === color ? 'color-btn active' : 'color-btn'
+                  mainColor === color ? "color-btn active" : "color-btn"
                 }`}
                 onClick={() => setMainColor(color)}
               >
@@ -58,15 +58,15 @@ const AddToCart: React.FC<AddToCartProps> = ({ product }) => {
           })}
         </div>
       </div>
-      <div className='btn-container'>
+      <div className="btn-container">
         <AmountButtons
           amount={amount}
           increase={increase}
           decrease={decrease}
         />
         <Link
-          to='/cart'
-          className='btn'
+          to="/cart"
+          className="btn"
           onClick={() => addToCart(id, mainColor, amount, product)}
         >
           add to cart
