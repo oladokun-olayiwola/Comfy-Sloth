@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { PageHero } from "../components";
 import aboutImg from "../assets/hero-bcg.jpeg";
-import productsReducer from "../reducers/products_reducer";
 import { useProductsContext } from "../context/products_context";
 
 const AboutPage: React.FC = () => {
