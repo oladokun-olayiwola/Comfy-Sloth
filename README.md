@@ -23,21 +23,25 @@ Comfy Sloth is a modern and stylish furniture e-commerce web application. Design
 To run this project locally:
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/your-username/comfy-sloth-store.git
    ```
 
 2. Navigate to the project directory:
+
    ```bash
    cd main
    ```
 
 3. Install dependencies:
+
    ```bash
    npm install
    ```
 
 4. Start the development server:
+
    ```bash
    npm start
    ```
