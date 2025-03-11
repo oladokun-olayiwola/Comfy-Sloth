@@ -33,7 +33,9 @@ const initialState: ProductState = {
     featured: false,
     category: '',
     shipping: false,
-    stock: 0
+    stock: 0,
+    stars: 3,
+    reviews: 3,
   },
 }
 
