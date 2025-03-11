@@ -6,7 +6,6 @@ import { formatPrice } from '../utils/helpers'
 import {
   Loading,
   Error,
-  ProductImages,
   AddToCart,
   Stars,
   PageHero,
@@ -56,6 +55,8 @@ const SingleProductPage: React.FC = () => {
     company,
     image,
   } = product
+  let productImage = typeof(image) === "string" ? image : image.url
+
   return (
     <Wrapper>
       <PageHero title={name} product={product} />
@@ -64,7 +65,7 @@ const SingleProductPage: React.FC = () => {
           back to products
         </Link>
         <div className=' product-center'>
-          <ProductImages images={[image]} />
+        <img src={productImage} alt={name} />
           <section className='content'>
             <h2>{name}</h2>
             <Stars stars={stars} reviews={reviews} />

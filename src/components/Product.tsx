@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom'
 import { ProductProps } from '../interfaces/componentTypes'
 
 const Product: React.FC<ProductProps> = ({ image, name, price, id }) => {
+  let productImage = typeof(image) === "string" ? image : image.url
   return (
     <Wrapper>
       <div className='container'>
-        <img src={image.url} alt={name} />
+        <img src={productImage} alt={name} />
         <Link to={`/products/${id}`} className='link'>
           <FaSearch />
         </Link>
