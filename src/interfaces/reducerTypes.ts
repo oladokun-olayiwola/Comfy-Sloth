@@ -67,6 +67,8 @@ export interface Product {
   category: string;
   shipping: boolean;
   stock: number;
+  stars: number;
+  reviews: number;
 }
 
 export interface ProductState {
